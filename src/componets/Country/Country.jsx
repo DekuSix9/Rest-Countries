@@ -3,9 +3,10 @@
 import { useState } from 'react';
 import'./Country.css'
 
-const Country = ({country}) => {
+const Country = ({country,handleVisitedCountry}) => {
 
     const [visited,setVisited] = useState(false);
+   
     
     if(!country){
         console.error("Not found")
@@ -16,19 +17,20 @@ const Country = ({country}) => {
    
 
    const handleClick=()=>{
-    setVisited(!visited)
+    setVisited(true)
    }
 
 
     
     return (
-        <div className="country">
-            <h3>{name?.common}</h3>
+        <div className={`country ${visited ? 'visited':'non-visited'}`}>
+            <h3 style={{color:visited?'red':'black'}}>{name?.common}</h3>
             
             <img src={flags?.png}></img>
-            <p>{population} people</p>
+            <p>Population:{population} </p>
             <p>{area}km²</p>
             <p><small>Code:{cca3}</small></p>
+            <button className='btn'>Mark Visited</button> <br></br>
             <button className='btn' onClick={handleClick}>{visited?'Visited':'Going'}</button>
             {visited ?'I have Visited the country':'I want to visit'}
         </div>
