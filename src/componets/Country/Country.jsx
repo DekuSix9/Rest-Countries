@@ -17,8 +17,10 @@ const Country = ({country,handleVisitedCountry}) => {
    
 
    const handleClick=()=>{
-    setVisited(true)
+    setVisited(!visited)
    }
+
+
 
 
     
@@ -30,7 +32,7 @@ const Country = ({country,handleVisitedCountry}) => {
             <p>Population:{population} </p>
             <p>{area}km²</p>
             <p><small>Code:{cca3}</small></p>
-            <button className='btn'>Mark Visited</button> <br></br>
+            <button className='btn' onClick={()=>handleVisitedCountry(country)}>Mark Visited</button> <br></br>
             <button className='btn' onClick={handleClick}>{visited?'Visited':'Going'}</button>
             {visited ?'I have Visited the country':'I want to visit'}
         </div>
